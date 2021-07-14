@@ -1,0 +1,2 @@
+rootProject.name = "Memify"
+include ':app'
