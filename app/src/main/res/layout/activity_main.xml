@@ -15,22 +15,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/design_default_color_background"
-        tools:context=".ui.MainActivity">
-
+        android:background="#D1D1D1"
+        >
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmerFrameLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:shimmer_auto_start="true"
-            app:shimmer_duration="500"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@id/next_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:shimmer_auto_start="true"
+            app:shimmer_duration="500">
 
             <include
                 layout="@layout/placeholder_layout"
+                android:visibility="visible"
                 tools:visibility="visible" />
         </com.facebook.shimmer.ShimmerFrameLayout>
 
@@ -38,22 +39,24 @@
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            app:cardCornerRadius="5dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/lightMediumGray">
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/lightMediumGray"
+            app:strokeWidth="2dp">
+
             <ImageView
                 android:id="@+id/imageView"
                 loadImageFromUrl="@{mainViewModel.memeResponse.data.url}"
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
+                android:scaleType="fitCenter"
                 android:visibility="gone"
-                android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -64,15 +67,17 @@
         </com.google.android.material.card.MaterialCardView>
 
         <View
+            android:id="@+id/viewline"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintStart_toStartOf="@id/card_view"
-            app:layout_constraintEnd_toEndOf="@id/card_view"
-            app:layout_constraintTop_toBottomOf="@id/card_view"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"/>
+            android:background="@android:color/darker_gray"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_text_view" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -98,7 +103,7 @@
             android:layout_marginBottom="12dp"
             android:background="@drawable/my_next_button"
             android:text="@string/next"
-            android:textColor="@color/design_default_color_primary"
+            android:textColor="@color/dodger_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline2" />
@@ -109,7 +114,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintGuide_percent="0.5"
             android:orientation="vertical"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintGuide_begin="205dp"
             app:layout_constraintHorizontal_bias="0.5"
@@ -117,17 +122,16 @@
 
         <TextView
             android:id="@+id/title_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{mainViewModel.memeResponse.data.title}"
             android:textColor="#000000"
             android:textSize="20sp"
             android:visibility="gone"
-            app:layout_constraintEnd_toStartOf="@id/like_image_view"
+            app:layout_constraintEnd_toStartOf="@+id/like_image_view"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/card_view"
             app:layout_constraintTop_toBottomOf="@+id/card_view" />
@@ -137,14 +141,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
             android:text="@{String.valueOf(mainViewModel.memeResponse.data.ups)}"
             android:textColor="@color/red"
             android:textSize="18sp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/card_view"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/card_view" />
 
         <ImageView
             android:id="@+id/like_image_view"
@@ -152,12 +155,12 @@
             android:layout_height="18dp"
             android:layout_marginEnd="6dp"
             android:visibility="gone"
-            app:tint="@color/red"
-            app:layout_constraintVertical_bias="0.86"
-            app:layout_constraintTop_toTopOf="@id/like_text_view"
-            app:layout_constraintEnd_toStartOf="@id/like_text_view"
             app:layout_constraintBottom_toBottomOf="@id/like_text_view"
-            app:srcCompat="@drawable/ic_heart" />
+            app:layout_constraintEnd_toStartOf="@id/like_text_view"
+            app:layout_constraintTop_toTopOf="@id/like_text_view"
+            app:layout_constraintVertical_bias="0.86"
+            app:srcCompat="@drawable/ic_heart"
+            app:tint="@color/red" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

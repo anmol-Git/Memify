@@ -4,4 +4,6 @@
     <string name="next">Next</string>
     <string name="likes">Likes</string>
     <string name="title">Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello details fragment</string>
 </resources>

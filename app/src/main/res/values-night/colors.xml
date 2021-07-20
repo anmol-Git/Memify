@@ -15,6 +15,10 @@
     <color name="red">#FF4646</color>
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
+    <color name="sky_blue">#19b5fe</color>
+    <color name="dark_blue">#1e8bc3</color>
+    <color name="dodger_blue">#22a7f0</color>
 
     <color name="placeHolderColor">@color/darker</color>
+    <color name="statusBarColor">@color/purple_500</color>
 </resources>
