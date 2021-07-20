@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav_graph"
+    app:startDestination="@id/main_activity_fragment">
+
+    <fragment
+        android:id="@+id/main_activity_fragment"
+        android:name="com.example.memify.ui.main_activity_fragment"
+        android:label="main_activity_fragment" >
+        <action
+            android:id="@+id/action_main_activity_fragment_to_details_fragment"
+            app:destination="@id/details_fragment" />
+        <action
+            android:id="@+id/action_main_activity_fragment_to_details_fragment2"
+            app:destination="@id/details_fragment"
+            app:enterAnim="@animator/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.example.memify.ui.details_fragment"
+        android:label="fragment_details_fragment"
+        tools:layout="@layout/fragment_details_fragment" >
+        <argument
+            android:name="ImageUrlGiven"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>
